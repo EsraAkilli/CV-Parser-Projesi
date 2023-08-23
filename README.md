@@ -1,6 +1,8 @@
 CV PARSER PROJESİ
 
-CV Parser, özgeçmiş veya CV olarak bilinen belgelerden, belirli bilgileri otomatik olarak çıkaran bir yazılım aracıdır. Bu projede, Python programlama dili kullanılarak e-posta, telefon ve ad soyad gibi bilgileri export eden bir CV Parser geliştirilmiştir. 1 Türkçe, 5 İngilizce CV için test edilmiştir.
+CV Parser, özgeçmiş veya CV olarak bilinen belgelerden, belirli bilgileri otomatik olarak çıkaran bir yazılım aracıdır. Bu projede, Python programlama dili kullanılarak e-posta, telefon ve ad soyad gibi bilgileri export eden bir CV Parser geliştirilmiştir. 1 Türkçe, 5 İngilizce CV için test edilmiştir. Bilgiler export edilirken Regex kullanılmıştır. Ancak ad soyad bilgilerini doğru export edebilmek için doğal dil işlemesi kullanılarak Nltk ve SpaCy kütüphanesi ile alternatif çözümler üretilmiştir. 
+
+DOSYA: CVParser_Regex
 
 ADIMLAR:
 1. Kütüphanelerin İçe Aktarılması:
@@ -74,6 +76,8 @@ Makine öğrenimi veya derin öğrenme yöntemleri kullanarak daha yüksek doğr
 7. Topluluk Katılımı:
 Proje açık kaynak olarak yayınlanarak topluluk katılımı teşvik edebilir ve farklı bakış açılarından gelen katkılar kullanılabilir.
 
+DOSYA: CVParser_Nltk
+
 NLTK KÜTÜPHANESİ
 
 Natural Language Toolkit (NLTK), doğal dil işleme (NLP) alanında Python programcılarına yönelik bir kütüphanedir. NLTK, metin verileriyle çalışmayı kolaylaştıran çeşitli araçlar ve veri yapıları sunar. Bu kütüphane, metin madenciliği, metin analizi, metin önişleme, dil modelleri oluşturma ve daha birçok NLP görevini gerçekleştirmek için kullanılır.
@@ -85,6 +89,8 @@ nltk.download('punkt'): NLTK kütüphanesinin punkt veri kümesini indirir. Bu v
 Metin işleme ve basit kurallara dayalı bir yöntem (metni ayırma, büyük harfle başlayan kelimeleri seçme, kombinasyonları oluşturma ve sayma) kullanarak ad-soyad kombinasyonlarını tespit etmeye çalışılabilir. Belirli koşullara göre filtrelenerek isim soyisim kombinasyonları olarak çıkarılır.
 
 Denenen örneklerde ad soyad çıktısı elde edildi. Ancak bununla birlikte farklı kombinasyonlar da bulundu. Farklı cv samplelarında programın ilk ad soyad çıktısının doğru sonuç verdiği gözlemlendi. Dolayısıyla kod, sadece ilk çıktısı olan ad soyad kombinasyonunu vermesi şeklinde düzenlenerek ilk kombinasyonu bulduktan sonra döngü sonlandırıldı.
+
+DOSYA: CVParser_SpaCy
 
 SpaCy KÜTÜPHANESİ
 
