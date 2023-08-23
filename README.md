@@ -84,7 +84,7 @@ nltk.tokenize.word_tokenize: Natural Language Toolkit (NLTK) kütüphanesinin wo
 
 nltk.download('punkt'): NLTK kütüphanesinin punkt veri kümesini indirir. Bu veri kümesi, metinleri cümlelere ve kelimelere ayırmak için kullanılan önişleme araçlarını içerir.
 
-Metin işleme ve basit kurallara dayalı bir yöntem (metni ayırma, büyük harfle başlayan kelimeleri seçme, kombinasyonları oluşturma ve sayma) kullanarak ad-soyad kombinasyonlarını tespit etmeye çalışılabilir. Belirli koşullara göre filtrelenerek ad soyad kombinasyonları olarak çıkarılır.
+Metin işleme ve basit kurallara dayalı bir yöntem (metni ayırma, büyük harfle başlayan kelimeleri seçme, kombinasyonları oluşturma ve sayma) kullanarak ad-soyad kombinasyonları tespit etmeye çalışılabilir. Belirli koşullara göre filtrelenerek ad soyad kombinasyonları olarak çıkarılır.
 
 Denenen örneklerde ad soyad çıktısı elde edildi. Ancak bununla birlikte farklı kombinasyonlar da bulundu. Farklı cv samplelarında programın ilk ad soyad çıktısının doğru sonuç verdiği gözlemlendi. Dolayısıyla kod, sadece ilk çıktısı olan ad soyad kombinasyonunu vermesi şeklinde düzenlenerek ilk kombinasyonu bulduktan sonra döngü sonlandırıldı.
 
@@ -104,6 +104,6 @@ Amaç: Çoklu dilde (multilingual) adlar ve varlıklar (entities) tanımak için
 Kapsam: Çoklu dili destekler ve temel doğal dil işleme görevlerine ek olarak ad ve varlık tanıma konusunda daha geniş bir destek sunar.
 Varsayılan Entite Etiketleri: Farklı dillerdeki metindeki adlar, organizasyonlar, tarihler, para birimleri, yüzlerce farklı varlık türünün etiketlenmesi için daha geniş bir destek sunar.
 
-Türkçe metinlerdeki "PERSON" (kişi) etiketlerini ad ve soyad olarak kabul eder. Bu yöntem daha karmaşık isim analizi için daha iyi sonuçlar verebilir. Öncelikle sadece Türkçe metinlerde ad-soyad ikililerini bulmak için tr_core_news_sm modeli denendi. Hata alınarak kaynağı Anaconda sanal ortamı olabileceğinden öncelikle terminalden kütüphane kurulumu silinip tekrar yüklendi. Tekrar aynı hata alınınca hata sürüm değişikliklerinden kaynaklanabileceği için tr_core_news_sm modeline geçildi. Eski bir sürüm olan SpaCy'nin 3.0.6 sürümü ile tr_core_news_sm modelini indirilerek çözüldü.
+Türkçe metinlerdeki "PERSON" (kişi) etiketlerini ad ve soyad olarak kabul eder. Bu yöntem daha karmaşık isim analizi için daha iyi sonuçlar verebilir. Öncelikle sadece Türkçe metinlerde ad-soyad ikililerini bulmak için tr_core_news_sm modeli denendi. Hata alınarak kaynağı Anaconda sanal ortamı olabileceğinden öncelikle terminalden kütüphane kurulumu silinip tekrar yüklendi. Tekrar aynı hata alınınca hata sürüm değişikliklerinden kaynaklanabileceği için tr_core_news_sm modeline geçildi. Eski bir sürüm olan SpaCy'nin 3.0.6 sürümü ile tr_core_news_sm modeli indirilerek çözüldü.
 
-Ancak bu sefer de sadece "Full Names:" çıktısı alındı. Yani metin içindeki kişi isimleri doğru bir şekilde tespit edemedi. Modelin sonuçlarını daha ayrıntılı incelemek için her bir varlık (entity) ve etiketini yazdırarak hangi türdeki varlıkların tespit edildiği gözlemlendi.
+Ancak bu sefer de sadece "Full Names:" çıktısı alındı. Yani metin içindeki kişi isimleri doğru bir şekilde tespit edilemedi. Modelin sonuçlarını daha ayrıntılı incelemek için her bir varlık (entity) ve etiketi yazdırılarak hangi türdeki varlıkların tespit edildiği gözlemlendi.
