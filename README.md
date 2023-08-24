@@ -67,6 +67,7 @@ SONUÇLAR
 E-posta adresleri, telefon numaraları ve ad-soyadlar örnek çıktılarda görülebilir.
 
 ÇIKTILAR
+```python
 Emails: ornek@gmail.com
 Phone Number: 543-542-85-10
 Names:
@@ -77,6 +78,7 @@ Industrial Systems
 Systems Thinking
 Labor Law
 ...
+```
 
 GELİŞTİRME ÖNERİLERİ
 
@@ -119,9 +121,10 @@ Metin işleme ve basit kurallara dayalı bir yöntem (metni ayırma, büyük har
 Denenen örneklerde ad soyad çıktısı elde edildi. Ancak bununla birlikte farklı kombinasyonlar da bulundu. Farklı cv samplelarında programın ilk ad soyad çıktısının doğru sonuç verdiği gözlemlendi. Dolayısıyla kod, sadece ilk çıktısı olan ad soyad kombinasyonunu vermesi şeklinde düzenlenerek ilk kombinasyonu bulduktan sonra döngü sonlandırıldı.
 
 ÇIKTILAR
+```python
 First Full Name Found:
 ESRA AKILLI
-
+```
 DOSYA: CVParser_SpaCy
 
 SpaCy KÜTÜPHANESİ
@@ -161,10 +164,11 @@ def extract_names(text):
     return full_names
 ```
 ÇIKTILAR:
-
+```python
 ESRA AKILLI       
 OBJECTIVE  
 EDUCATION ORG
 Istanbul LOC
 Turkey LOC
 ...
+```
