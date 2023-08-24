@@ -58,7 +58,7 @@ SONUÇLAR
 E-posta adresleri, telefon numaraları ve ad-soyadlar örnek çıktılarda görülebilir.
 
 ÇIKTILAR
-Emails: örnek@gmail.com
+Emails: ornek@gmail.com
 Phone Number: 543-542-85-10
 Names:
 Industrial Engineering
