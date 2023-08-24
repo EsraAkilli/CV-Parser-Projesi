@@ -100,6 +100,13 @@ Metin işleme ve basit kurallara dayalı bir yöntem (metni ayırma, büyük har
 
 Denenen örneklerde ad soyad çıktısı elde edildi. Ancak bununla birlikte farklı kombinasyonlar da bulundu. Farklı cv samplelarında programın ilk ad soyad çıktısının doğru sonuç verdiği gözlemlendi. Dolayısıyla kod, sadece ilk çıktısı olan ad soyad kombinasyonunu vermesi şeklinde düzenlenerek ilk kombinasyonu bulduktan sonra döngü sonlandırıldı.
 
+import re
+from collections import Counter
+from PyPDF2 import PdfReader
+import nltk
+from nltk.tokenize import word_tokenize
+nltk.download('punkt')
+
 ÇIKTILAR
 First Full Name Found:
 ESRA AKILLI
@@ -120,9 +127,33 @@ Amaç: Çoklu dilde (multilingual) adlar ve varlıklar (entities) tanımak için
 Kapsam: Çoklu dili destekler ve temel doğal dil işleme görevlerine ek olarak ad ve varlık tanıma konusunda daha geniş bir destek sunar.
 Varsayılan Entite Etiketleri: Farklı dillerdeki metindeki adlar, organizasyonlar, tarihler, para birimleri, yüzlerce farklı varlık türünün etiketlenmesi için daha geniş bir destek sunar.
 
-Türkçe metinlerdeki "PERSON" (kişi) etiketlerini ad ve soyad olarak kabul eder. Bu yöntem daha karmaşık isim analizi için daha iyi sonuçlar verebilir. Öncelikle sadece Türkçe metinlerde ad-soyad ikililerini bulmak için tr_core_news_sm modeli denendi. Hata alınarak kaynağı Anaconda sanal ortamı olabileceğinden öncelikle terminalden kütüphane kurulumu silinip tekrar yüklendi. Tekrar aynı hata alınınca hata sürüm değişikliklerinden kaynaklanabileceği için tr_core_news_sm modeline geçildi. Eski bir sürüm olan SpaCy'nin 3.0.6 sürümü ile tr_core_news_sm modeli indirilerek çözüldü.
+Türkçe metinlerdeki "PERSON" (kişi) etiketlerini ad ve soyad olarak kabul eder. Bu yöntem daha karmaşık isim analizi için daha iyi sonuçlar verebilir. Öncelikle sadece Türkçe metinlerde ad-soyad ikililerini bulmak için tr_core_news_sm modeli denendi. 
+
+OSError: [E050] Can't find model 'tr_core_news_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+
+Yukarıdaki hata alınarak kaynağı Anaconda sanal ortamı olabileceğinden öncelikle terminalden kütüphane kurulumu silinip tekrar yüklendi. Tekrar aynı hata alınınca hata sürüm değişikliklerinden kaynaklanabileceği için tr_core_news_sm modeline geçildi. Eski bir sürüm olan SpaCy'nin 3.0.6 sürümü ile tr_core_news_sm modeli indirilerek çözüldü.
+
+nlp = spacy.load("tr_core_news_sm")
+nlp = spacy.load("xx_ent_wiki_sm")
 
 Ancak bu sefer de sadece "Full Names:" çıktısı alındı. Yani metin içindeki kişi isimleri doğru bir şekilde tespit edilemedi. Modelin sonuçlarını daha ayrıntılı incelemek için her bir varlık (entity) ve etiketi yazdırılarak hangi türdeki varlıkların tespit edildiği gözlemlendi.
+
+def extract_names(text):
+    doc = nlp(text)
+    full_names = []
+    for ent in doc.ents:
+        if ent.label_ == "PERSON":  # Kişi adı etiketini kontrol edilir.
+            full_names.append(ent.text)
+    return full_names
+
+def extract_names(text):
+    doc = nlp(text)
+    full_names = []
+    for ent in doc.ents:
+        print(ent.text, ent.label_)  
+        if ent.label_ == "PERSON":  
+            full_names.append(ent.text)
+    return full_names
 
 ÇIKTILAR
 ESRA AKILLI       
