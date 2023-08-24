@@ -15,24 +15,33 @@ PdfReader ile her sayfadaki metin çıkarılır ve birleştirilerek tek bir meti
 3. E-posta Adreslerinin Çıkarılması:
 extract_emails(text) fonksiyonu, düzenli ifadeler (regex) kullanarak metin içindeki e-posta adreslerini tespit eder.
 Bulunan e-posta adresleri bir liste olarak toplanır.
-
-4. Telefon Numaralarının Çıkarılması:
+```python
+    emails = re.findall(r'[\w\.-]+@[\w\.-]+', text)
+```
+5. Telefon Numaralarının Çıkarılması:
 extract_phone_numbers(text) fonksiyonu, farklı desenlere göre metin içindeki telefon numaralarını arar.
 Desenlere uyan ilk telefon numarası bulunur ve döndürülür.
 Desenler; boşluklarla ayrılmış, tirelerle ayrılmış, 11 haneli veya 10 haneli numaraları içerir.
-
-5. İsimlerin Çıkarılması:
+```python
+    pattern = r'(\d{3}) (\d{3}) (\d{2}) (\d{2})'
+    pattern_second = r'(\d{3})-(\d{3})-(\d{2})-(\d{2})'
+    pattern_third = r'(\d{11})'
+    pattern_fourth = r'(\d{10})'
+```
+6. İsimlerin Çıkarılması:
 extract_names(text) fonksiyonu, düzenli ifadeler kullanarak metin içindeki isimleri tespit eder.
 İsimler, baş harfleri büyük olan ve boşlukla ayrılan iki kelimeden oluşan örüntüye sahip metin parçalarıdır.
-
-6. Ana Programın Çalıştırılması:
+```python
+    names = re.findall(r'\b[A-Z][a-z]+\s[A-Z][a-z]+\b', text)
+```
+7. Ana Programın Çalıştırılması:
 main() fonksiyonu, proje işlemlerini yürüten ana programdır.
 Belirtilen PDF dosyasının yolu pdf_path değişkenine atanır.
 PDF dosyası okunarak metne dönüştürülür.
 E-posta adresleri, telefon numaraları ve isimler çıkarılır.
 Elde edilen bilgiler ekrana yazdırılır.
 
-7. Sonuçların Görüntülenmesi:
+8. Sonuçların Görüntülenmesi:
 Çıkarılan e-posta adresleri, telefon numaraları ve ad soyadlar ayrı ayrı ekrana yazdırılır.
 
 KULLANILAN KÜTÜPHANELER
@@ -92,14 +101,6 @@ NLTK KÜTÜPHANESİ
 
 Natural Language Toolkit (NLTK), doğal dil işleme (NLP) alanında Python programcılarına yönelik bir kütüphanedir. NLTK, metin verileriyle çalışmayı kolaylaştıran çeşitli araçlar ve veri yapıları sunar. Bu kütüphane; metin madenciliği, metin analizi, metin önişleme, dil modelleri oluşturma ve daha birçok NLP görevini gerçekleştirmek için kullanılır.
 
-nltk.tokenize.word_tokenize: Natural Language Toolkit (NLTK) kütüphanesinin word_tokenize fonksiyonu, metni kelimelere ayırmak için kullanılır. Metni cümlelerden ve kelimelerden oluşan bir liste olarak böler.
-
-nltk.download('punkt'): NLTK kütüphanesinin punkt veri kümesini indirir. Bu veri kümesi, metinleri cümlelere ve kelimelere ayırmak için kullanılan önişleme araçlarını içerir.
-
-Metin işleme ve basit kurallara dayalı bir yöntem (metni ayırma, büyük harfle başlayan kelimeleri seçme, kombinasyonları oluşturma ve sayma) kullanarak ad-soyad kombinasyonları tespit etmeye çalışılabilir. Belirli koşullara göre filtrelenerek ad soyad kombinasyonları olarak çıkarılır.
-
-Denenen örneklerde ad soyad çıktısı elde edildi. Ancak bununla birlikte farklı kombinasyonlar da bulundu. Farklı cv samplelarında programın ilk ad soyad çıktısının doğru sonuç verdiği gözlemlendi. Dolayısıyla kod, sadece ilk çıktısı olan ad soyad kombinasyonunu vermesi şeklinde düzenlenerek ilk kombinasyonu bulduktan sonra döngü sonlandırıldı.
-
 ```python
 import re
 from collections import Counter
@@ -108,6 +109,14 @@ import nltk
 from nltk.tokenize import word_tokenize
 nltk.download('punkt')
 ``` 
+
+nltk.tokenize.word_tokenize: Natural Language Toolkit (NLTK) kütüphanesinin word_tokenize fonksiyonu, metni kelimelere ayırmak için kullanılır. Metni cümlelerden ve kelimelerden oluşan bir liste olarak böler.
+
+nltk.download('punkt'): NLTK kütüphanesinin punkt veri kümesini indirir. Bu veri kümesi, metinleri cümlelere ve kelimelere ayırmak için kullanılan önişleme araçlarını içerir.
+
+Metin işleme ve basit kurallara dayalı bir yöntem (metni ayırma, büyük harfle başlayan kelimeleri seçme, kombinasyonları oluşturma ve sayma) kullanarak ad-soyad kombinasyonları tespit etmeye çalışılabilir. Belirli koşullara göre filtrelenerek ad soyad kombinasyonları olarak çıkarılır.
+
+Denenen örneklerde ad soyad çıktısı elde edildi. Ancak bununla birlikte farklı kombinasyonlar da bulundu. Farklı cv samplelarında programın ilk ad soyad çıktısının doğru sonuç verdiği gözlemlendi. Dolayısıyla kod, sadece ilk çıktısı olan ad soyad kombinasyonunu vermesi şeklinde düzenlenerek ilk kombinasyonu bulduktan sonra döngü sonlandırıldı.
 
 ÇIKTILAR
 First Full Name Found:
@@ -131,7 +140,9 @@ Varsayılan Entite Etiketleri: Farklı dillerdeki metindeki adlar, organizasyonl
 
 Türkçe metinlerdeki "PERSON" (kişi) etiketlerini ad ve soyad olarak kabul eder. Bu yöntem daha karmaşık isim analizi için daha iyi sonuçlar verebilir. Öncelikle sadece Türkçe metinlerde ad-soyad ikililerini bulmak için tr_core_news_sm modeli denendi. 
 
+```python
 OSError: [E050] Can't find model 'tr_core_news_sm'. It doesn't seem to be a Python package or a valid path to a data directory.
+```
 
 Yukarıdaki hata alınarak kaynağı Anaconda sanal ortamı olabileceğinden öncelikle terminalden kütüphane kurulumu silinip tekrar yüklendi. Tekrar aynı hata alınınca hata sürüm değişikliklerinden kaynaklanabileceği için tr_core_news_sm modeline geçildi. Eski bir sürüm olan SpaCy'nin 3.0.6 sürümü ile tr_core_news_sm modeli indirilerek çözüldü.
 ```python
@@ -144,15 +155,7 @@ def extract_names(text):
     doc = nlp(text)
     full_names = []
     for ent in doc.ents:
-        if ent.label_ == "PERSON":  # Kişi adı etiketini kontrol edilir.
-            full_names.append(ent.text)
-    return full_names
-
-def extract_names(text):
-    doc = nlp(text)
-    full_names = []
-    for ent in doc.ents:
-        print(ent.text, ent.label_)  
+        print(ent.text, ent.label_)  #Eklenen kod satırı
         if ent.label_ == "PERSON":  
             full_names.append(ent.text)
     return full_names
