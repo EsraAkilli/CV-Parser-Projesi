@@ -155,7 +155,8 @@ def extract_names(text):
             full_names.append(ent.text)
     return full_names
 
-ÇIKTILAR
+ÇIKTILAR:
+
 ESRA AKILLI       
 OBJECTIVE  
 EDUCATION ORG
