@@ -57,6 +57,18 @@ SONUÇLAR
 Çıkarılan bilgiler ayrı ayrı listelenir ve ekrana yazdırılır.
 E-posta adresleri, telefon numaraları ve ad-soyadlar örnek çıktılarda görülebilir.
 
+ÇIKTILAR
+Emails: akilliesra.01@gmail.com
+Phone Number: 543-542-85-10
+Names:
+Industrial Engineering
+Course Highlights
+Data Management
+Industrial Systems
+Systems Thinking
+Labor Law
+...
+
 GELİŞTİRME ÖNERİLERİ
 
 1. Daha Kapsamlı İsim Algılama:
@@ -88,6 +100,10 @@ Metin işleme ve basit kurallara dayalı bir yöntem (metni ayırma, büyük har
 
 Denenen örneklerde ad soyad çıktısı elde edildi. Ancak bununla birlikte farklı kombinasyonlar da bulundu. Farklı cv samplelarında programın ilk ad soyad çıktısının doğru sonuç verdiği gözlemlendi. Dolayısıyla kod, sadece ilk çıktısı olan ad soyad kombinasyonunu vermesi şeklinde düzenlenerek ilk kombinasyonu bulduktan sonra döngü sonlandırıldı.
 
+ÇIKTILAR
+First Full Name Found:
+ESRA AKILLI
+
 DOSYA: CVParser_SpaCy
 
 SpaCy KÜTÜPHANESİ
@@ -107,3 +123,11 @@ Varsayılan Entite Etiketleri: Farklı dillerdeki metindeki adlar, organizasyonl
 Türkçe metinlerdeki "PERSON" (kişi) etiketlerini ad ve soyad olarak kabul eder. Bu yöntem daha karmaşık isim analizi için daha iyi sonuçlar verebilir. Öncelikle sadece Türkçe metinlerde ad-soyad ikililerini bulmak için tr_core_news_sm modeli denendi. Hata alınarak kaynağı Anaconda sanal ortamı olabileceğinden öncelikle terminalden kütüphane kurulumu silinip tekrar yüklendi. Tekrar aynı hata alınınca hata sürüm değişikliklerinden kaynaklanabileceği için tr_core_news_sm modeline geçildi. Eski bir sürüm olan SpaCy'nin 3.0.6 sürümü ile tr_core_news_sm modeli indirilerek çözüldü.
 
 Ancak bu sefer de sadece "Full Names:" çıktısı alındı. Yani metin içindeki kişi isimleri doğru bir şekilde tespit edilemedi. Modelin sonuçlarını daha ayrıntılı incelemek için her bir varlık (entity) ve etiketi yazdırılarak hangi türdeki varlıkların tespit edildiği gözlemlendi.
+
+ÇIKTILAR
+ESRA AKILLI       
+OBJECTIVE  
+EDUCATION ORG
+Istanbul LOC
+Turkey LOC
+...
